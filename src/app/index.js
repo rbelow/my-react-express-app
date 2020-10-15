@@ -1,1 +1,5 @@
-console.log("Hello world!");
+console.log("Hello World!");
+
+import {store} from './store'
+
+console.log(store.getState());
