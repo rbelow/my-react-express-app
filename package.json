@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack",
     "dev": "webpack-dev-server --open",
-    "start:dev": "npm start && npm run dev"
+    "start:dev": "npm start && npm run dev",
+    "test-connect": "babel-node src/server/connect-db",
+    "initialize": "babel-node src/server/initialize-db"
   },
   "keywords": [],
   "author": "Rubén Below <below@365farmnet.com>",
@@ -23,7 +25,7 @@
     "cross-env": "^5.2.0",
     "highground": "^1.0.3-beta",
     "jest": "^23.6.0",
-    "mongodb": "^3.1.10",
+    "mongodb": "3.1.10",
     "nodemon": "^1.18.4",
     "style-loader": "^0.23.0",
     "webpack": "^4.17.2",
