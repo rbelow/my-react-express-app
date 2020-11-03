@@ -5,7 +5,8 @@ import { createLogger } from "redux-logger";
 import createSagaMiddleware from "redux-saga";
 
 const sagaMiddleware = createSagaMiddleware();
-import * as sagas from "./sagas.mock";
+// import * as sagas from "./sagas.mock";
+import * as sagas from "./sagas";
 import * as mutations from "./mutations";
 
 export const store = createStore(
@@ -18,7 +19,7 @@ export const store = createStore(
             ...tasks,
             {
               id: action.taskID,
-              name: `New Task: ${action.taskID}`,
+              name: "New Task",
               group: action.groupID,
               owner: action.ownerID,
               isComplete: false,
