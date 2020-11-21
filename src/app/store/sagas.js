@@ -1,6 +1,6 @@
 import { take, put, select } from "redux-saga/effects";
 
-import uuid from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 
 import * as mutations from "./mutations";
@@ -13,8 +13,9 @@ export function* taskCreationSaga() {
     // const ownerID = yield select(state=>state.session.id);
     const ownerID = `U1`;
 
-    // const taskID = uuid(); FIXME:
-    const taskID = Math.floor(Math.random() * 1000 + 1).toString();
+    // const taskID = Math.floor(Math.random() * 1000 + 1).toString();
+    const taskID = uuidv4();
+
     yield put(mutations.createTask(taskID, groupID, ownerID));
     const { res } = yield axios.post(url + `/task/new`, {
       task: {
@@ -54,7 +55,7 @@ export function* userAuthenticationSaga() {
     );
 
     try {
-      const { data } = axios.post(url + `/authenticate`, {
+      const { data } = yield axios.post(url + `/authenticate`, {
         username,
         password,
       });
@@ -62,6 +63,8 @@ export function* userAuthenticationSaga() {
       if (!data) {
         throw new Error();
       }
+
+      console.log("Authenticated!", data);
     } catch (e) {
       console.log("can't authenticate");
       yield put(mutations.processAuthenticateUser(mutations.NOT_AUTHENTICATED));

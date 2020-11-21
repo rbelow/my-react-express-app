@@ -3,7 +3,7 @@ import cors from "cors";
 import express from "express";
 import { connectDB } from "./connect-db";
 import "./initialize-db";
-import { authenticationRoute } from "./connect-db";
+import { authenticationRoute } from "./authenticate";
 
 let port = 7777;
 
