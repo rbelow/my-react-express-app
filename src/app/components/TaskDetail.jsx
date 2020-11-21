@@ -37,7 +37,7 @@ const TaskDetail = ({
 };
 
 const mapStateToProps = (state, ownProps) => {
-  let id = ownProps.match.match.params.id;
+  let id = ownProps.match.params.id;
   let task = state.tasks.find((task) => task.id == id); // FIXME: ===
   let groups = state.groups;
 
@@ -50,7 +50,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const id = ownProps.match.match.params.id; // FIXME: match
+  const id = ownProps.match.params.id;
   return {
     setTaskCompletion(id, isComplete) {
       dispatch(mutations.setTaskCompletion(id, isComplete));
