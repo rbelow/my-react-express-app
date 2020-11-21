@@ -3,6 +3,7 @@ import cors from "cors";
 import express from "express";
 import { connectDB } from "./connect-db";
 import "./initialize-db";
+import { authenticationRoute } from "./connect-db";
 
 let port = 7777;
 
@@ -16,6 +17,8 @@ app.listen(port, console.log("Server listening on port", port));
 
 // Plugins
 app.use(cors(), bodyParser.urlencoded({ extended: true }), bodyParser.json());
+
+authenticationRoute(app);
 
 export const addNewTask = async (task) => {
   let db = await connectDB();
