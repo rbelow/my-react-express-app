@@ -1,11 +1,13 @@
 import React from "react";
+import * as mutations from "../store/mutations";
 import { connect } from "react-redux";
+// import e from "express";
 
-const LoginComponent = () => {
+const LoginComponent = ({ authenticateUser, authenticated }) => {
   return (
     <div>
       <h2>Please login</h2>
-      <form>
+      <form onSubmit={authenticateUser}>
         <input
           type="text"
           placeholder="username"
@@ -18,12 +20,29 @@ const LoginComponent = () => {
           name="password"
           defaultValue=""
         ></input>
+        {authenticated === mutations.NOT_AUTHENTICATED ? (
+          <p>Login incorrect</p>
+        ) : null}
         <button type="submit">Login</button>
       </form>
     </div>
   );
 };
 
-const mapStateToProps = (state) => state;
+const mapStateToProps = ({ session }) => ({
+  authenticated: session.authenticated,
+});
 
-export const ConnectedLogin = connect(mapStateToProps)(LoginComponent);
+const mapDispatchToProps = (dispatch) => ({
+  authenticateUser(e) {
+    e.preventDefault();
+    let username = e.target[`username`].value;
+    let password = e.target[`password`].value;
+    dispatch(mutations.requestAuthenticateUser(username, password));
+  },
+});
+
+export const ConnectedLogin = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginComponent);
