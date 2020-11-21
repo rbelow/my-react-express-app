@@ -18,7 +18,7 @@ const RouteGuard = (Component) => ({ match }) => {
     return <Component match={match}></Component>;
   }
 };
-  
+
 export const Main = () => (
   <Router history={history}>
     <Provider store={store}>

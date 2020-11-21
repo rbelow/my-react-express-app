@@ -2,6 +2,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
 import { connectDB } from "./connect-db";
+import "./initialize-db";
 
 let port = 7777;
 
