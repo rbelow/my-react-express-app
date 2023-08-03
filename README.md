@@ -1,5 +1,7 @@
 # my-react-express-app
 
+[![Node.js CI](https://github.com/rbelow/my-react-express-app/actions/workflows/node.js.yml/badge.svg)](https://github.com/rbelow/my-react-express-app/actions/workflows/node.js.yml)
+
 ## Start the app
 
 ```bash
